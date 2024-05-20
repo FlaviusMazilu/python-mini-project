@@ -1,10 +1,11 @@
-# from os import name
+from os import getenv
+from dotenv import load_dotenv
 import pandas as pd
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-
+load_dotenv()
 from_addr='ENTER_SENDERS_MAILID'
 
 data=pd.read_csv("abc.csv")         # Enter path of CSV files containing emails
@@ -23,8 +24,8 @@ for i in range (length):
 
     msg.attach(MIMEText(body,'plain'))
 
-    email=""   #Enter Your email id here
-    password=""           #Enter your Password
+    email= getenv('email')   #Enter Your email id here
+    password= getenv('password')     #Enter your Password
 
     mail=smtplib.SMTP('smtp.gmail.com',587)
     mail.ehlo()
