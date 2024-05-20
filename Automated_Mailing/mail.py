@@ -1,4 +1,4 @@
-from os import name
+# from os import name
 import pandas as pd
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -11,9 +11,9 @@ data=pd.read_csv("abc.csv")         # Enter path of CSV files containing emails
 to_addr=data['email'].tolist()      # Change'email' to column name containg emailids
 name = data['name'].tolist()
 
-l=len(name)
+length=len(name)
 
-for i in range (l):
+for i in range (length):
     msg=MIMEMultipart()
     msg['From']=from_addr
     msg['To']=to_addr[i]
